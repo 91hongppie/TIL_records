@@ -2,6 +2,8 @@
 - required
 	- numberOfRowsInSection()
 	- cellForRowAt()
+		- 이 함수에서 [[TableViewCell]]을 사용한다.
+		- 각 row에 대한 처리를 해주는 함수로 tableView의 dequeueReusableCell에 사용할 cell을 할당해서 cell이 재사용되도록 한다.
 ## TableViewDelegate
 - 필수 메서드가 없음
 - optional
