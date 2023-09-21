@@ -1,3 +1,3 @@
 - 화면 이동을 ViewModel에서 하는 것을 기본적으로 추구한다.
 - 실무에서는 ViewModel이 복잡해져서 실무에서는 Coordinator pattern을 사용한다.
-	- Coordinator Pattern 화면 이동과 관련된 부분
+	- Coordinator Pattern 화면 이동과 관련된 부분을 관리하는 객체를 따로 만든다.
