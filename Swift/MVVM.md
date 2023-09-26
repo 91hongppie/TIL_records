@@ -2,6 +2,14 @@
 - 실무에서는 ViewModel이 복잡해져서 실무에서는 Coordinator pattern을 사용한다.
 	- Coordinator Pattern 화면 이동과 관련된 부분을 관리하는 객체를 따로 만든다.
 
+## 구조
+- Model
+	- 데이터
+- View
+	- 화면
+- ViewModel
+	- 뷰를 위한 데이터
+
 # 왜 아키텍처 패턴이 필요할까?
 ## 왜 코드를 나누려고 하는가
 - 한 곳에 코드를 모두 작성하면 협업하는데 방해가 된다.
