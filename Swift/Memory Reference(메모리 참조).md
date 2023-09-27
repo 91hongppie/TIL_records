@@ -38,3 +38,32 @@ unowned var test = Test()
 - weak는 객체를 계속 추적하면서 객체가 사라지게 되면 nil로 바꾼다.
 - 하지만, unowned는 객체가 사라지게 되면 댕글링 포인터가 남는다.
 - 이 댕글링 포인터를 참조하게 되면 crash가 나는데, 이 때문에 unowned는 사라지지 않을거라고 보장되는 객체에만 설정하여야 한다.
+
+
+> 댕글링 포인터(Dangling pointer): 원래 바라보던 객체가 해제되면서 할당되지 않는 공간을 바라보는 포인터. 
+
+## 어느 상황에 쓰는가
+- strong
+	- 레퍼런스 카운트를 증가시켜 ARC로 인한 메모리 해제를 피하고, 객체를 안전하게 사용하고자 할 때 쓰인다.
+- weak
+	- 대표적으로 retain cycle에 의해 메모리가 누수되는 문제를 막기 위해 사용되며, delegate 패턴이 있다.
+- unowned
+	- 객체의 라이프사이클이 명확하고 개발자에 의해 제어 가능이 명확한 경우, weak Optional 타입 대신 사용하여 좀 더 간결한 코딩이 가능하다.
+- 약한 참조가 필요한 경우 weak 키워드만을 사용하고, guard let(또는 if let) 구문을 통해 안전하게 옵셔널을 추출하는 것을 권장한다. 
+
+## 순환참조
+- 서로가 서로를 소유하고 있어 절대 메모리 해제가 되지 않는 것
+- ARC가 편하게 메모리 관리를 해주지만 자칫 잘못하면 순환참조가 발생할 수 있다.
+
+### 예시 > delegate 패턴
+delegate를 하기 위해서는 일을 시키는 객체와 일을 하는 객체 두 개가 무조건 있어야 하는데, 아래의 코드로 객체를 연결시켜줌으로 인해 FirstViewController와 SecondViewController는 서로를 소유하는 상황이 된다.
+```swift
+vc.delegate = self
+```
+즉, FirstViewController에서 SecondViewController 객체를 만듦으로 SecondViewController를 소유하고, SecondViewController의 delegate를 FirstViewController로 연결해줌으로써 FirstViewController를 소유하는 순환참조가 된다. (양방향으로 참조함)
+
+이 문제를 해결하기 위해서는 SecondViewController의 delegate에 weak를 붙여주면 된다.
+```swift
+weak var delegate = FirstViewProtocol?
+```
+그렇게 되면 FirstViewController만 SecondViewController를 소유하기 때문에 순환참조가 발생하지 않는다.
