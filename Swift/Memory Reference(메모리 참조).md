@@ -36,6 +36,7 @@ unowned var test = Test()
 ```
 ## Weak와 unowned의 차이
 - weak는 객체를 계속 추적하면서 객체가 사라지게 되면 nil로 바꾼다.
+- weak 참조의 경우 항상 optional로 선언되기 때문에, 해당 값에 접근하기 전에 언래핑(unwrapping) 과정이 필요하다.
 - 하지만, unowned는 객체가 사라지게 되면 댕글링 포인터가 남는다.
 - 이 댕글링 포인터를 참조하게 되면 crash가 나는데, 이 때문에 unowned는 사라지지 않을거라고 보장되는 객체에만 설정하여야 한다.
 
