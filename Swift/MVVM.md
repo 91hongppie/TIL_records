@@ -83,4 +83,7 @@ class Person {
 let p1 = Person(name: "뉴진스")
 ```
 
- 
+
+# ETC...
+## coordinator pattern
+- 화면 이동과 관련된 로직을 관리하는 객체를 따로 만들어서 관리하는 패턴
