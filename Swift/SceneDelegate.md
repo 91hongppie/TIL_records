@@ -1,0 +1,3 @@
+- ViewController에 뭔가의 주입이 필요할 때 스토리보드에서 Is Initial View Controller를 해제한다.
+- Is Initial View Controller이 체크된 상태로 있으면 내부적인 코드로 View Controller를 자동으로 불러온다.
+- 해당 뷰컨트롤러가 생성될 때 전달한 부분이 있다면 Is Initial View Controller를 해제하고 SceneDelegate에서 코드로 주입하기
