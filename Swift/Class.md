@@ -76,4 +76,38 @@ song.ourName()
 	- my name is Song and your name is Kim
 
 # 클래스 초기화 (Initialization)
-- 위 코드에서 인스
+- 위 코드에서 인스턴스를 생성할 때 인수없이 만들었다.
+- 하지만 여러 인스턴스를 만들고 우리가 원하는 인수들까지 지정해줄 수 있다면 매우 편리해질 것이다.
+- 이런 때에 이용되는 것이 "초기화(Initialize)" 이다.
+- 이것은 인스턴스를 만들 때 자동으로 호출되는 초기화 처리 전용의 메서드이다.
+```swift
+class Name {
+	var name: String
+	var age: Int
+
+	init(name: String, age: Int) {
+		self.name = name
+		self.age = age
+	}
+
+	func my_name() {
+		print("my name is \(name) and \(age) year's old")
+	}
+}
+
+let name1: Name = Name(name: "song", age: 24)
+let name2: Name = Name(name: "kim", age: 25)
+
+name1.my_name()
+name2.my_name()
+```
+- 위 Name 클래스를 다시 한번 불러왔다.
+- 클래스의 속성드에게 값을 지정해주지 않고 init() 메서드를 이용해서 초기화했다.
+- init 메서드 안의 self는 자기 자신을 가리키는 값이다.
+- 즉, self. 이 붙은 변수들은 클래스 내의 변수라는 것이다.
+- name과 age 변수를 각각 지정해 준 뒤 인스턴스를 생성해보면 name: "song", age: 24 이렇게 인수들을 지정해 줄 수 있다.
+- name1과 name2의 인수들을 다르게 지정한 후 my_name() 메서드를 실행 시켜보도록하자.
+- 실행 결과
+	- my name is song and 24 year's old
+	- my name is kim and 25 year's old
+- 인수를 다르게 지정해주어 두 인스턴스의 메서드들이 각각의 인수에 맞게 출력이 되는 것을 확인할 수 있다.
