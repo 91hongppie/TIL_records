@@ -57,6 +57,32 @@ song.my_name()
 	- my name is Song
 
 # 구조체 초기화(Initialization)
-- [[Class]]와 달리 Struct(구조체)는 **구조체 멤버를 파라미터 네임으로하여 스위프트가 자동으로 초기화 코드를 만들어준다.**([[Mem]])
+- [[Class]]와 달리 Struct(구조체)는 **구조체 멤버를 파라미터 네임으로하여 스위프트가 자동으로 초기화 코드를 만들어준다.**([[Memberwise initializer]])
 - 직접 초기화 코드를 작성할 수도 있다.
 - 하지만 초기화 코드를 직접 정의하면 자동 초기화 코드는 더 이상 제공받지 못한다.
+```swift
+struct Name {
+	var name: String
+	var age: Int
+
+	func my_name() {
+		print("my name is \(name) and \(age) year's old")
+	}
+
+	init(name: String) {
+		self.name = name
+		self.age = 24
+	}
+}
+
+var song: Name = Name(name: "song")
+
+print(song.name)
+song.my_name()
+```
+- init() 초기화 함수를 이용하여 초기화 해주었다.
+- 이 때 자동 초기화([[Memberwise initializer]])는 사용할 수 없다.
+
+# 구조체 상속 (Inheritance)
+- 클래스와 달리 구조체에는 상속을 받을 수 없다.
+- 
