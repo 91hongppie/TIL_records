@@ -122,6 +122,6 @@ myStack.push(with: 5)
 print(myStack.pop()) // 5
 ```
 - 스위프트에는 [[Stack]]이나 [[Queue]]의 자료구조가 없기 때문에 직접 구현해서 사용해야한다.
-	- associatedtype은 해당 프로토콜을 채택하는 데이터 타입이 제네릭일 때 사용한다.
+	- [[Associated Type]]은 해당 프로토콜을 채택하는 데이터 타입이 제네릭일 때 사용한다.
 	- mutating 키워드를 사용해 인스턴스에서 변경 가능하다는 것을 표시할 수 있다.
 	- 이 mutating 키워드는 값 타입 형에만 사용한다.
