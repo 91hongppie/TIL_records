@@ -106,8 +106,8 @@ func isSameValues<T>(_ a: T, _ b: T) -> Bool {
 }
 ```
 - 위에처럼 하면 될 것 같지만, 에러가 발생한다.
-- == 연산자는, a와 b의 타입이 Equatable이란 프로토콜을 준수할 때만 사용할 수 있음
-- 우리가 T라고 선언한 타입 파라미터는, a, b가 Equatable 프로토콜을 준수하는 타입일 수도, 아닐수도 있는데 아닐수도 있기 때문에 == 연산자를 사용하지 못하는 것
+- == 연산자는, a와 b의 타입이 [[Equatable]]이란 프로토콜을 준수할 때만 사용할 수 있음
+- 우리가 T라고 선언한 타입 파라미터는, a, b가 [[Equatable]] 프로토콜을 준수하는 타입일 수도, 아닐수도 있는데 아닐수도 있기 때문에 == 연산자를 사용하지 못하는 것
 ```swift
 func isSameValues<T: Equatable>(_ a: T, _ b: T) -> Bool {
 	return a == b
