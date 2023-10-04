@@ -89,7 +89,7 @@ print(channy.getName()) // channy
 ```
 - Student 구조체를 초기화하고, .(dot) 문법을 통해 getName 메소드를 호출하면 이름이 출력됩니다.
 
-# 제네릭의 활용
+# [[Generic]]의 활용
 ```swift
 // 프로토콜 정의
 protocol Stackable {
