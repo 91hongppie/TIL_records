@@ -195,4 +195,4 @@ swapValues(&c, &d) // generic func
 ```
 - Int 타입으로 swapValues를 실행할 경우, 타입이 지정된 함수가 실행되고, String 타입으로 swapValue를 실행할 경우, 제네릭 함수가 실행된다.
 
-- [[Protocol]]에서 
+- [[Protocol]]에서 제네릭을 사용하려면 associatedtype이란 것을 사용해야 한다.
