@@ -46,16 +46,16 @@ func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
 ```swift
 var someInt = 1
 var anotherInt = 2
-swapTwoValues($someInt, $anotherInt) // 함수 호출시 T는 Int
+swapTwoValues(&someInt, &anotherInt) // 함수 호출시 T는 Int
 
 var someString = "Hi"
 var anotherString = "Bye"
-swapTwoValues($someString, $anotherString) // 함수 호출 시 T는 String
+swapTwoValues(&someString, &anotherString) // 함수 호출 시 T는 String
 ```
 - 이렇게 실제 함수를 호출할 때 Type Parameter인 T의 타입이 결정되는 것
 - 하지만 여기서 파라미터 a, b 모두 같은 타입 파라미터인 T로 선언되어 있기 때문에
 ```swift
-swapTwoValuee($someInt, $anotherString)
+swapTwoValuee(&someInt, &anotherString)
 ```
 - 서로 다른 타입을 파라미터로 전달하면, 첫 번째 someInt를 통해 타입파라미터 T가 Int로 결정됐기 때문에, 두 번째 파라미터인 anotherString의 타입이 Int가 아니라며 에러가 난다.
 - 똑같은 내용의 함수를 오버로딩 할 필요없이 제네릭을 사용하면 된다. 
@@ -155,4 +155,44 @@ extension Array where Element: FixedWidthInteger {
 	mutating func pop() -> Element { return self.removeLast() }
 }
 ```
-- 이렇게, 타입 파라미터 Element가
+- 이렇게, 타입 파라미터 Element가 FixedWidthInteger라는 프로토콜을 준수해야 한다라는 제약을 주면
+```swift
+let nums = [1, 2, 3]
+let strs = ["a", "b", "c"]
+
+nums.pop() // 0
+strs.pop() // X
+```
+- FixedWidthInteger 프로토콜을 준수하는 Array\<Int> 형인 nums는 extension에서 구현된 pop이란 메서드를 사용할 수 있다
+- 하지마, FixedWidthInteger 프로토콜을 준수하지않는 Array\<String> 형인 strs는 extension에서 구현된 pop이란 메서드를 사용할 수 없다.
+
+# 제네릭 함수와 오버로딩
+- 제네릭은 보통 타입에 관계없이 동일하게 실행되지만, 만약 특정 타입일 경우 제네릭말고 다른 함수로 구현하고 싶다면 <span style='color: red'>제네릭 함수를 오버로딩</span> 하면 된다.
+```swift
+func swapValues<T>(_ a: inout T, _ b: inout T) {
+	print("generic func")
+	let tempA = a
+	a = b
+	b = tempA												
+}
+
+func swapValues(_ a: inout Int, _ b: inout Int) {
+	print("specialized func")
+	let tempA = a
+	a = b
+	b = tempA												
+}
+```
+- 이렇게 할 경우 타입이 지정된 함수가 제네릭 함수보다 우선순위가 높아서
+```swift
+var a = 1
+var b = 2
+swapValues(&a, &b) // specialized func
+
+var c = "Hi"
+var d = "Kyu~"
+swapValues(&c, &d) // generic func
+```
+- Int 타입으로 swapValues를 실행할 경우, 타입이 지정된 함수가 실행되고, String 타입으로 swapValue를 실행할 경우, 제네릭 함수가 실행된다.
+
+- [[Protocol]]에서 
