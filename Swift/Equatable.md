@@ -39,4 +39,49 @@ if A(1) == A(2) { // error!
 - A(1).aNum == A(2).aNum은 알 수 있다. aNum이 Int 타입이기 때문에
 - 여기서 A(1) == A(2) 비교를 원한다면, 이 때 Equatable이 필요하다.
 - 클래스 A는 Equatable을 채택하고 준수함으로서 동일한지 동일하지 않은지 판별이 가능해지는 것이다.
-- 
+- Equatable을 채택해보자
+```swift
+class A: Equatable {
+	var aNum: Int
+	init(_ aNum: Int) {
+		self.aNum = aNum
+	}
+}
+```
+- 클래스 A가 Equatable프로토콜을 채택했다.
+- 하지만 에러가 발생한다.
+	- Typa 'A' does not conform to protocol 'Equatable'
+- 클래스 A는 Equatable 프로토콜을 준수하고 있지 않기 때문이다.
+- Equatable 프로토콜을 보면 Optional이 아닌 메서드가 있다. 이걸 구현해줘야한다.
+- 클래스 A에 구현해보자.
+```swift
+class A: Equatable {
+	var aNum: Int
+	init(_ aNum: Int) {
+		self.aNum = aNum
+	}
+
+	public static func ==(lhs: Self, rhs: Self) -> Bool {
+	}
+}
+```
+- 이렇게 작성하면 에러가 발생한다.
+	- 'Self' is only available in a protocol or as the result of a method in a class; did you mean 'A'?
+- Self가 아니라 A라고 작성하자
+```swift
+class A: Equatable {
+	var aNum: Int
+	init(_ aNum: Int) {
+		self.aNum = aNum
+	}
+
+	public static func ==(lhs: A, rhs: A) -> Bool {
+	}
+}
+```
+- 이러면 새로운 에러가 발생한다.
+	- Missing return in a function expected to return 'Bool'
+- Bool 값을 리턴해줘야 한다.
+```swift
+
+```
