@@ -83,5 +83,27 @@ class A: Equatable {
 	- Missing return in a function expected to return 'Bool'
 - Bool 값을 리턴해줘야 한다.
 ```swift
+class A: Equatable {
+	var aNum: Int
+	init(_ aNum: Int) {
+		self.aNum = aNum
+	}
 
+	public static func ==(lhs: A, rhs: A) -> Bool {
+		return lhs.aNum == rhs.aNum
+	}
+}
 ```
+- 클래스 A의 프로퍼티인 aNum이 같은지 다른지 판별해서 리턴해준다.
+- aNum은 Int 타입이기 때문에 Equatable을 준수해서 == 비교가 가능하다.
+```swift
+if A(1) == A(2) {
+	print("same")
+} else {
+	print("different")
+}
+```
+- 위 코드는 잘 실행될까?
+- 실행결과
+	- different
+- 잘 된다.
