@@ -34,4 +34,5 @@
 
 ## Attributes
 - KeyChain item을 설명하는 특성, item class에 따라 설정할 수 있는 attributes가 달라진다.
-- 애플 문서를 보면 
+
+https://adora-y.tistory.com/entry/iOS-KeyChain%EC%9D%B4%EB%9E%80-Swift%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%86%B5%ED%95%B4-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0
