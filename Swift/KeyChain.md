@@ -124,6 +124,6 @@ func updateTokens(_ token: [Token]) -> Bool {
 ```swift
 func deleteTokens() -> Bool {
 	guard let query = self.query else { return false }
-	return SecItemDelete(query as CFDictionary) == errSecSucces
+	return SecItemDelete(query as CFDictionary) == errSecSuccess
 }
 ```
