@@ -31,6 +31,18 @@ func configureNavigationBar() {
 - [[UIBarAppearance]]를 상속받는다.
 - NavigationBar의 색상이나 디자인을 변경하거나 할 때 사용한다.
 
+## .configureWith______
+- 그림자 값을 생성한다.
+## .configureWithOpaqueBackground
+- 불투명한 색상의 백그라운드 생성
+## .configureWithDefaultBackground
+- 반투명한 그림자를 백그라운드 앞에 생성
+## .configureWithTransparentBackground
+- 그림자 제거하고 기존의 백그라운드 색상을 사용
+
+## .largeTitleTextAttributes
+- 
+# navigationController
 ## .standardAppearance
 - largeTitle이 없는 size의 navigationBar의 모습 세팅
 ## .compactAppearance
@@ -39,4 +51,17 @@ func configureNavigationBar() {
 
 ## .scrollEdgeAppearance
 - scrollable한 content의 edge가 NavigationBar에 일치하는 edge에 도달할 때의 모습 세팅
-- 
+- 스크롤된 content의 edge가 해당 bar에 도달하면, UIKit이 이 프로퍼티의 appearance settings를 적용한다고 한다.
+
+## .prefersLargeTitles
+- true
+	- 큰 타이틀을 사용하겠다는 뜻
+- false
+	- 큰 타이틀을 사용하지 않겠다는 뜻
+	- 
+
+## .tintColor
+- navigationBar의 아이콘이나 글자 색상
+# navigationItem
+## .title
+- navigationBar의 title
