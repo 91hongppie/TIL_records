@@ -41,27 +41,35 @@ func configureNavigationBar() {
 - 그림자 제거하고 기존의 백그라운드 색상을 사용
 
 ## .largeTitleTextAttributes
-- 
+- largeText에 대한 style을 지정한다.
+
+## .backgroundColor
+- navigationBar에 대한 배경색 지정
+
+
+
 # navigationController
 ## .standardAppearance
 - largeTitle이 없는 size의 navigationBar의 모습 세팅
 ## .compactAppearance
 - compact-height navigation bar의 모습 세팅
 - 작은 iPhone에서 landscape일 때 모습이라고 한다.
-
 ## .scrollEdgeAppearance
 - scrollable한 content의 edge가 NavigationBar에 일치하는 edge에 도달할 때의 모습 세팅
 - 스크롤된 content의 edge가 해당 bar에 도달하면, UIKit이 이 프로퍼티의 appearance settings를 적용한다고 한다.
-
 ## .prefersLargeTitles
 - true
 	- 큰 타이틀을 사용하겠다는 뜻
 - false
 	- 큰 타이틀을 사용하지 않겠다는 뜻
 	- 
-
 ## .tintColor
 - navigationBar의 아이콘이나 글자 색상
+## .isTranslucent
+- 반투명인지 여부를 세팅한다.
+## .overrideUserInterfaceStyle
+- 해당 부분에서만 테마 덮어쓰기
+
 # navigationItem
 ## .title
 - navigationBar의 title
